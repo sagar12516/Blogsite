@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+{%block content%}
+<style>
+  img{
+    width:200px;
+    height:200x;
+    border-radius:50%;
+  }
+
+</style>
+<div class="jumbotron">
+  <div align="center">
+    <!-- <h1>Welcome {{current_user.username}}</h1>
+    {%if current_user.gender=='1'%}
+      <img align='center' src="static/profile_pics/{{ current_user.profile_image | default('male.jpg') }}"/>
+    {%elif current_user.gender=='2'%}
+        <img align='center' src="static/profile_pics/{{ current_user.profile_image | default('female.jpg') }}"/> -->
+      <img align='center' src="{{url_for('static',filename='profile_pics/'+current_user.profile_image)}}">
+    {%endif%}
+  </div>
+</div>
+
+<div class="container">
+
+  <form method="POST" action="" enctype="multipart/form-data">
+    {{form.hidden_tag()}}
+    {{form.username.label}}{{form.username(class="form-control")}}
+    <br>
+    <br>
+    {{form.email.label}}{{form.email(class="form-control")}}
+    <br>
+    <br>
+    {{form.picture.label}}<br>{{form.picture()}}
+    <br>
+    <br>
+    {{form.gender.label}}<br>{{form.gender(class="form-control")}}
+    <br>
+    {{form.submit()}}
+    <br>
+    <br>
+  </form>
+
+</div>
+
+{%endblock%}

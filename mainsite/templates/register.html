@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{%block content%}
+
+{%with messages=get_flashed_messages(category_filter=['details','register'])%}
+  {%for mess in messages%}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+      {{mess}}
+  </div>
+  {%endfor%}
+{%endwith%}
+
+<div class="jumbotron">
+  <form  method="POST">
+    {{form.hidden_tag()}}
+    {{form.username.label}}{{form.username(class="form-control" ,placeholder="Enter Username")}}<br>
+    {{form.email.label}}{{form.email(class="form-control" ,placeholder="Enter Email")}}<br>
+    {{form.password.label}}{{form.password(class="form-control" ,placeholder="Enter Password")}}<br>
+    {{form.pass_confirm.label}}{{form.pass_confirm(class="form-control" ,placeholder="Re-enter Password")}}<br>
+    {{form.gender.label}}<br>
+    {{form.gender(class="form-control")}}
+    <br>
+    {{form.submit(class="btn btn-dark")}}
+
+  </form>
+
+</div>
+
+{%endblock%}
